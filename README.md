@@ -1,6 +1,10 @@
 # orfeo-search
 
-Web search interface for linguistic annotations
+This is a web search interface for annotated text corpora based on
+Apache Solr and [Blacklight](http://projectblacklight.org).
+
+See the [orfeo-importer](https://github.com/larilampen/orfeo-importer)
+repository for more information about project Orfeo.
 
 
 # Installation and Configuration
@@ -25,6 +29,14 @@ executed to create it:
 git clone https://github.com/larilampen/orfeo-search.git
 cd orfeo-search
 rake db:migrate
+```
+
+The metadata model (defined by the orfeo-metadata gem) must be
+incorporated into the Solr schema file. This is handled by a rake
+task:
+
+```bash
+rake orfeo:update
 ```
 
 A secret key (used to verify the integrity of signed cookies) should

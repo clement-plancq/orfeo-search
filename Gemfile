@@ -43,6 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'orfeo_metadata'
+
 gem 'blacklight', '>= 5.3.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
