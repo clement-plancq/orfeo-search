@@ -11,6 +11,9 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
+# File is regenerated from template.
+jetty/solr/blacklight-core/conf/schema.xml
+
 # See secrets.yml for an explanation of why it is not ignored.
 #config/secrets.yml
 
