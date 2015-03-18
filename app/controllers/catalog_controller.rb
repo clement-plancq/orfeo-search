@@ -36,6 +36,9 @@ class CatalogController < ApplicationController
     #config.show.title_field = 'title_display'
     #config.show.display_type_field = 'format'
 
+    config.add_search_field 'text', :label => 'Texte'
+    config.add_search_field 'all_fields', :label => 'Tous les champs'
+
     # The metadata model defines which fields are facets, search fields etc.
     #   The ordering of the field names is the order of the display
     md = OrfeoMetadata::MetadataModel.new
@@ -55,26 +58,7 @@ class CatalogController < ApplicationController
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
     config.add_facet_fields_to_solr_request!
-
-    # "fielded" search configuration. Used by pulldown among other places.
-    # For supported keys in hash, see rdoc for Blacklight::SearchFields
-    #
-    # Search fields will inherit the :qt solr request handler from
-    # config[:default_solr_parameters], OR can specify a different one
-    # with a :qt key/value. Below examples inherit, except for subject
-    # that specifies the same :qt as default for our own internal
-    # testing purposes.
-    #
-    # The :key is what will be used to identify this BL search field internally,
-    # as well as in URLs -- so changing it after deployment may break bookmarked
-    # urls.  A display label will be automatically calculated from the :key,
-    # or can be specified manually to be different. 
-
-    # This one uses all the defaults set by the solr request handler. Which
-    # solr request handler? The one set in config[:default_solr_parameters][:qt],
-    # since we aren't specifying it otherwise. 
     
-    config.add_search_field 'all_fields', :label => 'All Fields'
     
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
