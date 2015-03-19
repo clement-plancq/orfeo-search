@@ -10,6 +10,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+jetty/jettywrapper.log
 
 # File is regenerated from template.
 jetty/solr/blacklight-core/conf/schema.xml
