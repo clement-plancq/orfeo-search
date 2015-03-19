@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
   orfeo:
-    welcome_head: "Welcome!"
-    welcome: "Welcome to Orfeo text search"
+    welcome_head: "Bienvenue!"
+    welcome: "Bienvenue sur la page de recherche de texte du projet Orfeo"
