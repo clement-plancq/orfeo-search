@@ -16,5 +16,9 @@ namespace :orfeo do
         end
       end
     end
+
+    # Also copy over any of our files that differ from the
+    # jettywrapped Solr's defaults.
+    FileUtils::cp 'templates/stopwords.txt', 'jetty/solr/blacklight-core/conf/stopwords.txt'
   end
 end
