@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-    I18n.locale = extract_locale_from_accept_language_header
+    if params[:locale].blank?
+      redirect_to({ locale: extract_locale_from_accept_language_header }.merge params)
+    else
+      I18n.locale = params[:locale]
+    end
     logger.debug "* Locale set to '#{I18n.locale}'"
   end
 
@@ -23,5 +27,9 @@ class ApplicationController < ActionController::Base
       return str if I18n.available_locales.include? str.to_sym
     end
     return I18n.default_locale
+  end
+
+  def default_url_options(options={})
+    { locale: I18n.locale }.merge options
   end
 end
