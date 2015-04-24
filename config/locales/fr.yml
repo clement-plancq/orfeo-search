@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  meta:
+    lang_name: "français"
   orfeo:
     welcome_head: "Bienvenue!"
     welcome: "Bienvenue sur la page de recherche de texte du projet Orfeo"
