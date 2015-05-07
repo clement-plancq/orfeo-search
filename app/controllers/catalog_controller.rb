@@ -57,11 +57,12 @@ class CatalogController < ApplicationController
       config.add_show_field mdfield.name, :label => mdfield.to_s
     end
 
+    config.add_show_field 'text', label: 'Texte'
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
     config.add_facet_fields_to_solr_request!
-
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
