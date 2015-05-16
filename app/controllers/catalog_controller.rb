@@ -9,9 +9,12 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
-      :qf => 'text',
-      :qt => 'search',
-      :rows => 10
+      qt: 'search',
+      rows: 10,
+      'hl.fl': 'text',
+      'hl.simple.pre': '<mark>',
+      'hl.simple.post': '</mark>',
+      hl: true
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -58,6 +61,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_show_field 'text', label: 'Texte'
+    config.add_index_field 'text', label: 'Texte', highlight: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
