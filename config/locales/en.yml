@@ -28,6 +28,7 @@ en:
   blacklight:
     search:
       fields:
+        text: "Text"
         type: "Type"
         nomCorpus: "Corpus"
         langue: "Language"
