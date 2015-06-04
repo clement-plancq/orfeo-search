@@ -56,6 +56,9 @@ class CatalogController < ApplicationController
       if mdfield.search_target?
         config.add_search_field(mdfield.name)
       end
+      if mdfield.show_in_snippet_view?
+        config.add_index_field mdfield.name, label: mdfield.to_s
+      end
       config.add_show_field mdfield.name, :label => mdfield.to_s
     end
 
