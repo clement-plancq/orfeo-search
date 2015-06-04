@@ -3,7 +3,7 @@
 This is a web search interface for annotated text corpora based on
 Apache Solr and [Blacklight](http://projectblacklight.org).
 
-See the [orfeo-importer](https://github.com/larilampen/orfeo-importer)
+See the [orfeo-importer](https://github.com/orfeo-treebank/orfeo-importer)
 repository for more information about project Orfeo.
 
 
@@ -18,7 +18,7 @@ those is beyond the scope of this readme.
 
 The package orfeo-metadata must be installed before installing this
 app. See the
-[repository](https://github.com/larilampen/orfeo-metadata) for
+[repository](https://github.com/orfeo-treebank/orfeo-metadata) for
 installation instructions.
 
 First, clone the git repository. The repository does not contain the
@@ -26,7 +26,7 @@ working file of the sqlite database, so database migrations must be
 executed to create it:
 
 ```bash
-git clone https://github.com/larilampen/orfeo-search.git
+git clone https://github.com/orfeo-treebank/orfeo-search.git
 cd orfeo-search
 rake db:migrate
 ```
@@ -64,4 +64,4 @@ rails server
 Point your browser to http://localhost:3000/ to see the front page of
 the search interface. To fill the index, refer to the documentation of
 the associated
-[importer module](https://github.com/larilampen/orfeo-importer).
+[importer module](https://github.com/orfeo-treebank/orfeo-importer).
