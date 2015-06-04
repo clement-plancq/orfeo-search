@@ -12,8 +12,9 @@ rerun.txt
 pickle-email-*.html
 jetty/jettywrapper.log
 
-# File is regenerated from template.
+# Regenerated from templates.
 jetty/solr/blacklight-core/conf/schema.xml
+jetty/solr/blacklight-core/conf/solrconfig.xml
 
 # See secrets.yml for an explanation of why it is not ignored.
 #config/secrets.yml
