@@ -1,0 +1,33 @@
+<%# default partial to display solr document fields in catalog index view -%>
+  <% txtz = nil %>
+	<% urlz = nil %>
+	<% document_show_fields(document).each do |solr_fname, field| -%>
+	<% if solr_fname == 'text' %>
+	<% txtz = render_index_field_value document, :field => solr_fname %>
+	<% elsif solr_fname == 'url' -%>
+	<% urlz = render_index_field_value document, :field => solr_fname %>
+	<%= urlz %>
+  <% end -%>
+	<% end -%>
+	<% offset = 0 %>
+	<% loop do -%>
+	<% offset, lc, match, rc = split_context(txtz, offset, 50) %>
+	<% break if offset.nil? %>
+	<tr>
+		<td>
+			<%= link_to_document document, document_show_link_field(document) %>
+		</td>
+  <% index_fields(document).each do |solr_fname, field| -%>
+	<% if solr_fname != 'text' -%>
+	<td><%= render_index_field_value document, :field => solr_fname %></td>
+	<% end -%>
+	<% end -%>
+	<td><%= lc %></td>
+	<% if urlz -%>
+	<td><%= link_to match, urlz %></td>
+	<% else -%>
+	<td><mark><%= match %></mark></td>
+	<% end -%>
+	<td><%= rc %></td>
+  </tr>
+	<% end -%>

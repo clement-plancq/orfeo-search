@@ -1,0 +1,39 @@
+<% # container for all documents in index view -%>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+
+<div id="documents">
+  <table class="table-condensed" data-minimum-count-columns="0" id="hittable" data-show-columns="true" data-toggle="table" data-sort-name="lc" data-sort-order="desc">
+    <thead>
+      <tr>
+        <th data-field="sample" data-sortable="true"><%= t('blacklight.search.fields.nomFichier') %></th>
+        <% index_fields(documents[0]).each do |solr_fname, field| -%>
+        <% if solr_fname != 'text' -%>
+        <th data-sortable="true"><%= t("blacklight.search.fields.#{solr_fname}") %></th>
+        <% end -%>
+        <% end -%>
+        <th class="borderless" data-field="lc" data-switchable="false" data-sortable="true" data-sorter="lc_sorter" data-align="right" data-halign="right">LC</th>
+        <th data-field="match" data-switchable="false" data-sortable="true">Match</th>
+        <th data-field="rc" data-switchable="false" data-sortable="true">RC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render collection: documents, partial: 'concordancer/document' %>
+    </tbody>
+  </table>
+  <script type="text/javascript">
+  function lc_sorter(a, b) {
+    a2 = a.slice(a.lastIndexOf(' ') + 1);
+    b2 = b.slice(b.lastIndexOf(' ') + 1);
+    console.log(a + " ~ " + b);
+    console.log(a2 + " ~~ " + b2);
+    console.log(a2.localeCompare(b2));
+    return a2.localeCompare(b2);
+  }
+  </script>
+</div>

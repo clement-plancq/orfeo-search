@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 #
-class CatalogController < ApplicationController
+class ConcordancerController < CatalogController
   before_filter :startup
 
   include Blacklight::Catalog
@@ -12,11 +12,13 @@ class CatalogController < ApplicationController
       ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
       config.default_solr_params = {
         qt: 'search',
-        rows: 10,
+        rows: 50,
         fl: '*',
         'hl.fl': 'text',
         'hl.simple.pre': '<mark>',
         'hl.simple.post': '</mark>',
+        'hl.snippets': 999,
+        'hl.fragsize': 0,
         hl: true
       }
 
@@ -38,15 +40,15 @@ class CatalogController < ApplicationController
       #}
 
       # solr field configuration for search results/index views
-      config.index.title_field = 'resume'
+      config.index.title_field = 'nomFichier'
       config.index.display_type_field = 'format'
 
       # solr field configuration for document/show views
       #config.show.title_field = 'title_display'
       #config.show.display_type_field = 'format'
 
-      config.add_search_field 'text', :label => 'Texte'
-      config.add_search_field 'all_fields', :label => 'Tous les champs'
+      #    config.add_search_field 'text', :label => 'Texte'
+      config.add_search_field 'text'
 
       # The metadata model defines which fields are facets, search fields etc.
       #   The ordering of the field names is the order of the display
@@ -56,10 +58,7 @@ class CatalogController < ApplicationController
         if mdfield.facet?
           config.add_facet_field mdfield.name, :label => mdfield.to_s
         end
-        if mdfield.search_target?
-          config.add_search_field(mdfield.name)
-        end
-        if mdfield.show_in_snippet_view?
+        if mdfield.show_in_concordancer?
           config.add_index_field mdfield.name, label: mdfield.to_s
         end
         config.add_show_field mdfield.name, :label => mdfield.to_s
