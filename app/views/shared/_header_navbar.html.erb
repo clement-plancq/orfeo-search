@@ -19,5 +19,13 @@
 <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <%= render_search_bar  %>
+
+    <div class="clearfix navbar-form">
+      <% if controller.controller_name == 'concordancer' -%>
+      <%= link_to "Show snippet view", url_for(params_for_search.merge(:controller => 'catalog')), class: "btn btn-primary" %>
+      <% else -%>
+      <%= link_to "Show table view", url_for(params_for_search.merge(:controller => 'concordancer')), class: "btn btn-primary" %>
+      <% end -%>
+    </div>
   </div>
 </div>
