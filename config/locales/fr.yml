@@ -25,7 +25,10 @@ fr:
   orfeo:
     welcome_head: "Bienvenue!"
     welcome: "Bienvenue sur la page de recherche de texte du projet Orféo"
+    catalog:
+      show: "Voir extraits de texte"
     concordancer:
+      show: "Voir tableau"
       match: "Résultat"
       lc:
         heading: "Mots précédents"

@@ -25,7 +25,10 @@ en:
   orfeo:
     welcome_head: "Welcome!"
     welcome: "Welcome to Orfeo text search"
+    catalog:
+      show: "Show as snippets"
     concordancer:
+      show: "Show as table"
       match: "Result"
       lc:
         heading: "Preceding words"
