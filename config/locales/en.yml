@@ -25,6 +25,10 @@ en:
   orfeo:
     welcome_head: "Welcome!"
     welcome: "Welcome to Orfeo text search"
+    concordancer:
+      lc: "Preceding words"
+      match: "Result"
+      rc: "Subsequent words"
   blacklight:
     search:
       fields:

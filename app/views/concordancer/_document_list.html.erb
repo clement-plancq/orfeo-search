@@ -17,9 +17,11 @@
         <th data-sortable="true"><%= t("blacklight.search.fields.#{solr_fname}") %></th>
         <% end -%>
         <% end -%>
-        <th class="borderless" data-field="lc" data-switchable="false" data-sortable="true" data-sorter="lc_sorter" data-align="right" data-halign="right">LC</th>
-        <th data-field="match" data-switchable="false" data-sortable="true">Match</th>
-        <th data-field="rc" data-switchable="false" data-sortable="true">RC</th>
+        <th data-field="lc" data-switchable="false" data-sortable="true" data-sorter="lc_sorter" data-align="right">
+          <%= t('orfeo.concordancer.lc') %>
+        </th>
+        <th data-field="match" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.match') %></th>
+        <th data-field="rc" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.rc') %></th>
       </tr>
     </thead>
     <tbody>

@@ -24,4 +24,8 @@ fr:
     lang_name: "français"
   orfeo:
     welcome_head: "Bienvenue!"
-    welcome: "Bienvenue sur la page de recherche de texte du projet Orfeo"
+    welcome: "Bienvenue sur la page de recherche de texte du projet Orféo"
+    concordancer:
+      lc: "Mots précédents"
+      match: "Résultat"
+      rc: "Mots suivants"
