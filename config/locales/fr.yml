@@ -26,6 +26,12 @@ fr:
     welcome_head: "Bienvenue!"
     welcome: "Bienvenue sur la page de recherche de texte du projet Orféo"
     concordancer:
-      lc: "Mots précédents"
       match: "Résultat"
-      rc: "Mots suivants"
+      lc:
+        heading: "Mots précédents"
+        button: "%{count} mots précédents"
+        label: '%{count}<span class="sr-only"> mots précédents</span>'
+      rc:
+        heading: "Mots suivants"
+        button: "%{count} mots suivants"
+        label: '%{count}<span class="sr-only"> mots suivants</span>'

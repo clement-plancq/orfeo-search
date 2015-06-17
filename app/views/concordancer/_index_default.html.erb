@@ -11,7 +11,7 @@
 	<% end -%>
 	<% offset = 0 %>
 	<% loop do -%>
-	<% offset, lc, match, rc = split_context(txtz, offset, 5, 5) %>
+	<% offset, lc, match, rc = split_context(txtz, offset, lc_size, rc_size) %>
 	<% break if offset.nil? %>
 	<tr>
 		<td>

@@ -26,9 +26,15 @@ en:
     welcome_head: "Welcome!"
     welcome: "Welcome to Orfeo text search"
     concordancer:
-      lc: "Preceding words"
       match: "Result"
-      rc: "Subsequent words"
+      lc:
+        heading: "Preceding words"
+        button: "%{count} preceding words"
+        label: '%{count}<span class="sr-only"> preceding words</span>'
+      rc:
+        heading: "Subsequent words"
+        button: "%{count} subsequent words"
+        label: '%{count}<span class="sr-only"> subsequent words</span>'
   blacklight:
     search:
       fields:

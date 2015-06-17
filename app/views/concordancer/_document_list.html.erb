@@ -8,7 +8,28 @@
 <!-- Latest compiled and minified Locales -->
 
 <div id="documents">
-  <table class="table-condensed" data-minimum-count-columns="0" id="hittable" data-show-columns="true" data-toggle="table" data-sort-name="lc" data-sort-order="desc">
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <%= t(:'orfeo.concordancer.lc.button', :count => lc_size) %> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <%- (1..20).each do |count| %>
+        <li><%= link_to(t(:'orfeo.concordancer.lc.label', :count => count).html_safe, url_for(params_for_search(:lc => count))) %></li>
+      <%- end -%>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <%= t(:'orfeo.concordancer.rc.button', :count => rc_size) %> <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <%- (1..20).each do |count| %>
+        <li><%= link_to(t(:'orfeo.concordancer.rc.label', :count => count).html_safe, url_for(params_for_search(:rc => count))) %></li>
+      <%- end -%>
+    </ul>
+  </div>
+
+  <table class="table-condensed" data-minimum-count-columns="0" id="hittable" data-show-columns="true" data-toggle="table">
     <thead>
       <tr>
         <th data-field="sample" data-sortable="true"><%= t('blacklight.search.fields.nomFichier') %></th>
@@ -18,10 +39,10 @@
         <% end -%>
         <% end -%>
         <th data-field="lc" data-switchable="false" data-sortable="true" data-sorter="lc_sorter" data-align="right">
-          <%= t('orfeo.concordancer.lc') %>
+          <%= t('orfeo.concordancer.lc.heading') %>
         </th>
         <th data-field="match" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.match') %></th>
-        <th data-field="rc" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.rc') %></th>
+        <th data-field="rc" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.rc.heading') %></th>
       </tr>
     </thead>
     <tbody>

@@ -32,4 +32,12 @@ module ApplicationHelper
 
     return c, lc, ma, rc
   end
+
+  def lc_size
+    params.fetch(:lc, 5).to_i
+  end
+
+  def rc_size
+    params.fetch(:rc, 5).to_i
+  end
 end
