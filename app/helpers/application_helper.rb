@@ -16,19 +16,20 @@ module ApplicationHelper
   end
 
   # Split string into left and right context around each match.
-  def split_context(str, offset = 0, context_size = 55)
+  # The context sizes are measured in number of words.
+  def split_context(str, offset = 0, lc_size = 5, rc_size = 5)
     b = str.index(' <mark>', offset)
     return nil if b.nil?
-    start = b > context_size ? b - context_size : 0
-    lc = str[start..b-1].gsub(/<\/?mark>/,'')
+    lc = str[0...b].gsub(/<\/?mark>/,'').split()
+    lc = lc[-lc_size..-1] if lc.size > lc_size
+    lc = lc.join(' ')
+
     b += 7
     c = str.index('</mark>', b)
     return nil if c.nil?
-    ma = str[b..c-1]
-    c += 7
-    rc = str[c,context_size].gsub(/<\/?mark>/,'')
+    ma = str[b...c]
+    rc = str[c..-1].gsub(/<\/?mark>/,'').split()[0...rc_size].join(' ')
 
     return c, lc, ma, rc
   end
-
 end
