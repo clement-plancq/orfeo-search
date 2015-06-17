@@ -38,7 +38,7 @@ class CatalogController < ApplicationController
       #}
 
       # solr field configuration for search results/index views
-      config.index.title_field = 'resume'
+      config.index.title_field = 'nomFichier'
       config.index.display_type_field = 'format'
 
       # solr field configuration for document/show views
