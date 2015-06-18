@@ -55,13 +55,17 @@ class ConcordancerController < CatalogController
       md = OrfeoMetadata::MetadataModel.new
       md.load
       md.fields.each do |mdfield|
+        para = {label: mdfield.to_s}
         if mdfield.facet?
-          config.add_facet_field mdfield.name, :label => mdfield.to_s
+          config.add_facet_field mdfield.name, para
         end
         if mdfield.show_in_concordancer?
-          config.add_index_field mdfield.name, label: mdfield.to_s
+          config.add_index_field mdfield.name, para
         end
-        config.add_show_field mdfield.name, :label => mdfield.to_s
+        if mdfield.name == 'nomFichier' || mdfield.name == 'url'
+          para.merge!({helper_method: :sample_link_helper})
+        end
+        config.add_show_field mdfield.name, para
       end
 
       config.add_show_field 'text', label: 'Texte'

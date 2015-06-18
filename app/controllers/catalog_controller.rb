@@ -42,7 +42,7 @@ class CatalogController < ApplicationController
       config.index.display_type_field = 'format'
 
       # solr field configuration for document/show views
-      #config.show.title_field = 'title_display'
+      config.show.title_field = 'nomFichier'
       #config.show.display_type_field = 'format'
 
       config.add_search_field 'text', :label => 'Texte'
@@ -53,16 +53,20 @@ class CatalogController < ApplicationController
       md = OrfeoMetadata::MetadataModel.new
       md.load
       md.fields.each do |mdfield|
+        para = {label: mdfield.to_s}
         if mdfield.facet?
-          config.add_facet_field mdfield.name, :label => mdfield.to_s
+          config.add_facet_field mdfield.name, para
         end
         if mdfield.search_target?
           config.add_search_field(mdfield.name)
         end
         if mdfield.show_in_snippet_view?
-          config.add_index_field mdfield.name, label: mdfield.to_s
+          config.add_index_field mdfield.name, para
         end
-        config.add_show_field mdfield.name, :label => mdfield.to_s
+        if mdfield.name == 'nomFichier' || mdfield.name == 'url'
+          para.merge!({helper_method: :sample_link_helper})
+        end
+        config.add_show_field mdfield.name, para
       end
 
       config.add_show_field 'text', label: 'Texte'

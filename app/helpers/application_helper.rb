@@ -15,6 +15,15 @@ module ApplicationHelper
     end
   end
 
+  # If 'url' is defined, make the specified field show as a link to it.
+  def sample_link_helper args
+    if args[:document][:url]
+      link_to(args[:document][args[:field]], args[:document][:url])
+    else
+      args[:document][args[:field]]
+    end
+  end
+
   # Split string into left and right context around each match.
   # The context sizes are measured in number of words.
   def split_context(str, offset = 0, lc_size = 5, rc_size = 5)
