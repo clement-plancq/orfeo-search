@@ -189,6 +189,7 @@ DEPENDENCIES
   jquery-rails
   orfeo_metadata
   rails (= 4.2.0)
+  rsolr
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

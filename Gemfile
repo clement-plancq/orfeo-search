@@ -45,6 +45,7 @@ end
 
 gem 'orfeo_metadata'
 
+gem 'rsolr'
 gem 'blacklight', '>= 5.3.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
