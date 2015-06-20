@@ -8,11 +8,8 @@
 	<% urlz = render_index_field_value document, :field => solr_fname %>
   <% end -%>
 	<% end -%>
-	<% offset = 0 %>
-	<% loop do -%>
-	<% offset, lc, match, rc = split_context(txtz, offset, lc_size, rc_size) %>
-	<% break if offset.nil? %>
-	<tr>
+  <% split_context(txtz, lc_size, rc_size) do |lc, match, rc| -%>
+  <tr>
 		<td>
 			<%= link_to_document document, document_show_link_field(document) %>
 		</td>
