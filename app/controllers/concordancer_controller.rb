@@ -14,11 +14,13 @@ class ConcordancerController < CatalogController
         qt: 'search',
         rows: 50,
         fl: '*',
-        'hl.fl': 'text',
-        'hl.simple.pre': '<mark>',
-        'hl.simple.post': '</mark>',
-        'hl.snippets': 999,
-        'hl.fragsize': 0,
+        # This syntax is OK in Ruby 2.2 but not in earlier versions:
+        #'hl.fl': 'text',
+        'hl.fl'.to_sym => 'text',
+        'hl.simple.pre'.to_sym => '<mark>',
+        'hl.simple.post'.to_sym => '</mark>',
+        'hl.snippets'.to_sym => 999,
+        'hl.fragsize'.to_sym => 0,
         hl: true
       }
 

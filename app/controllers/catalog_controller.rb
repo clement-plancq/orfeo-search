@@ -14,9 +14,11 @@ class CatalogController < ApplicationController
         qt: 'search',
         rows: 10,
         fl: '*',
-        'hl.fl': 'text',
-        'hl.simple.pre': '<mark>',
-        'hl.simple.post': '</mark>',
+        # This syntax is OK in Ruby 2.2 but not in earlier versions:
+        #'hl.fl': 'text',
+        'hl.fl'.to_sym => 'text',
+        'hl.simple.pre'.to_sym => '<mark>',
+        'hl.simple.post'.to_sym => '</mark>',
         hl: true
       }
 
