@@ -33,10 +33,11 @@ rake db:migrate
 
 The metadata model (defined by the orfeo-metadata gem) must be
 incorporated into the Solr schema file. This is handled by a rake
-task:
+task. The same task also sets a password for Solr, which must be
+provided as a parameter:
 
 ```bash
-rake orfeo:update
+rake orfeo:update password=PASSWORD
 ```
 
 A secret key (used to verify the integrity of signed cookies) should

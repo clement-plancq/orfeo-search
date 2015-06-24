@@ -67,7 +67,7 @@
     </Call>
 
     <!-- =========================================================== -->
-    <!-- Set handler Collection Structure                            --> 
+    <!-- Set handler Collection Structure                            -->
     <!-- =========================================================== -->
     <Set name="handler">
       <New id="Handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
@@ -86,11 +86,11 @@
         </Set>
       </New>
     </Set>
-    
+
     <!-- =========================================================== -->
     <!-- Configure Request Log                                       -->
     <!-- =========================================================== -->
-    <!-- 
+    <!--
     <Ref id="Handlers">
       <Call name="addHandler">
         <Arg>
@@ -137,10 +137,10 @@
             <Arg>org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern</Arg>
             <Arg>.*/servlet-api-[^/]*\.jar$</Arg>
           </Call>
-          
-          
+
+
           <!-- Add a customize step to the deployment lifecycle -->
-          <!-- uncomment and replace DebugBinding with your extended AppLifeCycle.Binding class 
+          <!-- uncomment and replace DebugBinding with your extended AppLifeCycle.Binding class
           <Call name="insertLifeCycleNode">
             <Arg>deployed</Arg>
             <Arg>starting</Arg>
@@ -154,11 +154,21 @@
             </Arg>
           </Call>
           -->
-          
+
         </New>
       </Arg>
     </Call>
-    
+
+    <Call name="addBean">
+      <Arg>
+        <New class="org.eclipse.jetty.security.HashLoginService">
+          <Set name="name">Orfeo Realm</Set>
+          <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+          <Set name="refreshInterval">0</Set>
+        </New>
+      </Arg>
+    </Call>
+
     <Ref id="DeploymentManager">
       <Call name="addAppProvider">
         <Arg>

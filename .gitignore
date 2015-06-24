@@ -15,6 +15,8 @@ jetty/jettywrapper.log
 # Regenerated from templates.
 jetty/solr/blacklight-core/conf/schema.xml
 jetty/solr/blacklight-core/conf/solrconfig.xml
+jetty/etc/realm.properties
+config/initializers/solr_authentication.rb
 
 # See secrets.yml for an explanation of why it is not ignored.
 #config/secrets.yml
