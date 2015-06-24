@@ -1,17 +1,14 @@
 <%# default partial to display solr document fields in catalog index view -%>
-  <% txtz = nil %>
-	<% urlz = nil %>
-	<% document_show_fields(document).each do |solr_fname, field| -%>
-	<% if solr_fname == 'text' %>
-	<% txtz = render_index_field_value document, :field => solr_fname %>
-	<% elsif solr_fname == 'url' -%>
-	<% urlz = render_index_field_value document, :field => solr_fname %>
-  <% end -%>
-	<% end -%>
+  <% txtz = render_index_field_value document, :field => 'text' %>
+  <% sample_url = render_index_field_value document, :field => 'url' %>
   <% split_context(txtz, lc_size, rc_size) do |lc, match, rc| -%>
   <tr>
 		<td>
-			<%= link_to_document document, document_show_link_field(document) %>
+      <% if sample_url -%>
+      <%= link_to render_index_field_value(document, :field => 'nomFichier'), sample_url %>
+      <% else -%>
+      <%= link_to_document document, document_show_link_field(document) %>
+      <% end -%>
 		</td>
   <% index_fields(document).each do |solr_fname, field| -%>
 	<% if solr_fname != 'text' -%>
@@ -19,8 +16,8 @@
 	<% end -%>
 	<% end -%>
 	<td><%= lc %></td>
-	<% if urlz -%>
-	<td><%= link_to match, urlz %></td>
+	<% if sample_url -%>
+	<td><%= link_to match, sample_url %></td>
 	<% else -%>
 	<td><mark><%= match %></mark></td>
 	<% end -%>
