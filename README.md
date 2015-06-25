@@ -40,6 +40,10 @@ provided as a parameter:
 rake orfeo:update password=PASSWORD
 ```
 
+Note that the `orfeo:update` task creates some files required to start
+Solr, which means that attempting to start the app before the above
+task has been executed will result in failure.
+
 A secret key (used to verify the integrity of signed cookies) should
 be defined in the environment variable `SECRET_KEY_BASE`. If it is
 undefined, the server will use insecure fallback keys for development
