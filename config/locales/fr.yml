@@ -29,6 +29,7 @@ fr:
       show: "Voir extraits de texte"
     concordancer:
       show: "Voir tableau"
+      tree: "arbre"
       match: "Résultat"
       lc:
         heading: "Mots précédents"

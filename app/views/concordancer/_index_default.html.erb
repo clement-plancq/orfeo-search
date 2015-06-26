@@ -1,7 +1,7 @@
 <%# default partial to display solr document fields in catalog index view -%>
   <% txtz = render_index_field_value document, :field => 'text' %>
   <% sample_url = render_index_field_value document, :field => 'url' %>
-  <% split_context(txtz, lc_size, rc_size) do |lc, match, rc| -%>
+  <% split_context(txtz, lc_size, rc_size) do |lc, match, rc, start_word, end_word| -%>
   <tr>
 		<td>
       <% if sample_url -%>
@@ -17,7 +17,12 @@
 	<% end -%>
 	<td><%= lc %></td>
 	<% if sample_url -%>
-	<td><%= link_to match, sample_url %></td>
+  <% par = {from: start_word, to: end_word} -%>
+  <% par_tree = {tree: start_word} -%>
+  <td>
+    <%= link_to match, "#{sample_url}?#{par.to_query}" %>
+    <small>(<%= link_to t('orfeo.concordancer.tree'), "#{sample_url}?#{par_tree.to_query}" %>)</small>
+  </td>
 	<% else -%>
 	<td><mark><%= match %></mark></td>
 	<% end -%>

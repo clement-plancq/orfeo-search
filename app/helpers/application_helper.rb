@@ -26,6 +26,7 @@ module ApplicationHelper
 
   # Split string into left and right context around each match.
   # The context sizes represent number of words.
+  # Yields left context, match, right context, start and end indices of the match.
   def split_context(str, lc_size = 5, rc_size = 5)
     return unless block_given?
 
@@ -63,7 +64,7 @@ module ApplicationHelper
         match = words[st..en].join(' ')
       end
       rc = words[en+1..en+rc_size].join(' ')
-      yield lc, match, rc
+      yield lc, match, rc, st, en
     end
   end
 

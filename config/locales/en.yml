@@ -29,6 +29,7 @@ en:
       show: "Show as snippets"
     concordancer:
       show: "Show as table"
+      tree: "tree"
       match: "Result"
       lc:
         heading: "Preceding words"
