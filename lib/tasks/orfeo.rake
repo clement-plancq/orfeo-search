@@ -17,6 +17,10 @@ namespace :orfeo do
         infile.each do |line|
           if line =~ /<!-- ### FIELDS ### -->/
             md.output_schema outfile
+          elsif line =~ /### TEXTTYPE ###/
+            ttype = (ENV['stemming'] == 'true') ? 'text_fr' : 'text_ws'
+            line.sub!('### TEXTTYPE ###', ttype)
+            outfile.print line
           else
             outfile.print line
           end

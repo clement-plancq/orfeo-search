@@ -522,7 +522,7 @@
    <field name="id" type="string" indexed="true" stored="true" required="true" />
    <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" multiValued="false"/>
    <!-- default, catch all search field -->
-   <field name="text" type="text_fr" indexed="true" stored="true" multiValued="false"/>
+   <field name="text" type="### TEXTTYPE ###" indexed="true" stored="true" multiValued="false"/>
 
    <!-- ### FIELDS ### -->
 
