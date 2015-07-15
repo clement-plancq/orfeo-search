@@ -48,7 +48,7 @@ class CatalogController < ApplicationController
       #config.show.display_type_field = 'format'
 
       config.add_search_field 'text', :label => 'Texte'
-      config.add_search_field 'all_fields', :label => 'Tous les champs'
+      config.add_search_field 'all_fields', :label => 'Tous'
 
       # The metadata model defines which fields are facets, search fields etc.
       #   The ordering of the field names is the order of the display
