@@ -8,6 +8,11 @@
 <!-- Latest compiled and minified Locales -->
 
 <div id="documents">
+  <%- if params.fetch(:q, '').blank? %>
+  <div>
+    <%= t('orfeo.concordancer.no_term') %>
+  </div>
+  <%- else %>
   <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <%= t(:'orfeo.concordancer.lc.button', :count => lc_size) %> <span class="caret"></span>
@@ -56,4 +61,5 @@
     return a2.localeCompare(b2);
   }
   </script>
+  <%- end %>
 </div>

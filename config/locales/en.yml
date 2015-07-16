@@ -31,6 +31,7 @@ en:
       show: "Show as table"
       tree: "tree"
       match: "Result"
+      no_term: "To use the table view, you must enter a search term."
       lc:
         heading: "Preceding words"
         button: "%{count} preceding words"

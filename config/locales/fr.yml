@@ -31,6 +31,7 @@ fr:
       show: "Voir tableau"
       tree: "arbre"
       match: "Résultat"
+      no_term: "Pour utiliser la forme tabulaire, vous devez entrer un mot de recherche."
       lc:
         heading: "Mots précédents"
         button: "%{count} mots précédents"
