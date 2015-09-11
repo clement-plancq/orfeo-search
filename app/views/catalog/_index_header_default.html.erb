@@ -13,7 +13,7 @@
          </span>
          <% sample_url = render_index_field_value document, :field => 'url' %>
          <% if sample_url %>
-         <%= link_to render_index_field_value(document, :field => 'nomFichier'), sample_url %>
+         <%= link_to render_index_field_value(document, :field => 'nomFichier'), sample_url, data: { no_turbolink: true } %>
          <% else %>
          <%= link_to_document document, document_show_link_field(document), :counter => counter %>
          <% end %>
