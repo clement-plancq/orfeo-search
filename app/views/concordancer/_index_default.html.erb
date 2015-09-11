@@ -5,7 +5,12 @@
   <tr>
 		<td>
       <% if sample_url -%>
-      <%= link_to render_index_field_value(document, :field => 'nomFichier'), sample_url %>
+      <% name = render_index_field_value(document, :field => 'nomFichier') %>
+      <% if name.length > 10 %>
+      <%= link_to name[0..9], sample_url, data: { no_turbolink: true }, title: name %>...
+      <% else -%>
+      <%= link_to name, sample_url, data: { no_turbolink: true } %>
+      <% end -%>
       <% else -%>
       <%= link_to_document document, document_show_link_field(document) %>
       <% end -%>
