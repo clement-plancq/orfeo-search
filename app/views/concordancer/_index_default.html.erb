@@ -20,8 +20,8 @@
   <% par = {from: start_word, to: end_word} -%>
   <% par_tree = {tree: start_word} -%>
   <td>
-    <%= link_to match, "#{sample_url}?#{par.to_query}" %>
-    <small>(<%= link_to t('orfeo.concordancer.tree'), "#{sample_url}?#{par_tree.to_query}" %>)</small>
+    <%= link_to match, "#{sample_url}?#{par.to_query}", data: { no_turbolink: true } %>
+    <small>(<%= link_to t('orfeo.concordancer.tree'), "#{sample_url}?#{par_tree.to_query}", data: { no_turbolink: true } %>)</small>
   </td>
 	<% else -%>
 	<td><mark><%= match %></mark></td>
