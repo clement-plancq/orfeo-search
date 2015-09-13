@@ -22,9 +22,13 @@
 
     <div class="clearfix navbar-form">
       <% if controller.controller_name == 'concordancer' -%>
-      <%= link_to t('orfeo.catalog.show'), url_for(params_for_search.merge(:controller => 'catalog')), class: "btn btn-primary" %>
+      <%= link_to t('orfeo.catalog.show'), url_for(params_for_search.merge(:controller => 'catalog')) %>
+      |
+      <%= t('orfeo.concordancer.show') %>
       <% else -%>
-      <%= link_to t('orfeo.concordancer.show'), url_for(params_for_search.merge(:controller => 'concordancer')), class: "btn btn-primary" %>
+      <%= t('orfeo.catalog.show') %>
+      |
+      <%= link_to t('orfeo.concordancer.show'), url_for(params_for_search.merge(:controller => 'concordancer')) %>
       <% end -%>
     </div>
   </div>
