@@ -1,3 +1,8 @@
 fr:
   blacklight:
     application_name: 'Orféo'
+    search:
+      pagination_info:
+        pages:
+          one: '<strong>%{start_num}</strong> - <strong>%{end_num}</strong> sur <strong>%{total_num}</strong> échantillons'
+          other: '<strong>%{start_num}</strong> - <strong>%{end_num}</strong> sur <strong>%{total_num}</strong> échantillons'
