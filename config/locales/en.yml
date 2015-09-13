@@ -28,16 +28,16 @@ en:
     catalog:
       show: "Show as snippets"
     concordancer:
-      show: "Show as table"
+      show: "Show concordancer"
       tree: "tree"
       match: "Result"
-      no_term: "To use the table view, you must enter a search term."
+      no_term: "To use the concordance view, you must enter a search term."
       lc:
-        heading: "Preceding words"
+        heading: "Left context"
         button: "%{count} preceding words"
         label: '%{count}<span class="sr-only"> preceding words</span>'
       rc:
-        heading: "Subsequent words"
+        heading: "Right context"
         button: "%{count} subsequent words"
         label: '%{count}<span class="sr-only"> subsequent words</span>'
   blacklight:

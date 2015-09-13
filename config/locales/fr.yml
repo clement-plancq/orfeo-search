@@ -28,15 +28,15 @@ fr:
     catalog:
       show: "Voir extraits de texte"
     concordancer:
-      show: "Voir tableau"
+      show: "Voir concordancier"
       tree: "arbre"
       match: "Résultat"
       no_term: "Pour utiliser la forme tabulaire, vous devez entrer un mot de recherche."
       lc:
-        heading: "Mots précédents"
+        heading: "Contexte gauche"
         button: "%{count} mots précédents"
         label: '%{count}<span class="sr-only"> mots précédents</span>'
       rc:
-        heading: "Mots suivants"
+        heading: "Contexte droit"
         button: "%{count} mots suivants"
         label: '%{count}<span class="sr-only"> mots suivants</span>'
