@@ -1,7 +1,9 @@
-<%# default partial to display solr document fields in catalog index view -%>
+<%# default partial to display solr document fields in concordancer view -%>
   <% txtz = render_index_field_value document, :field => 'text' %>
   <% sample_url = render_index_field_value document, :field => 'url' %>
-  <% split_context(txtz, lc_size, rc_size) do |lc, match, rc, start_word, end_word| -%>
+  <% solrquery = params.fetch(:q, '') %>
+  <% if solrquery =~ /^"(.*)"$/ then solrquery = $1 else solrquery = nil end %>
+  <% split_context(txtz, lc_size, rc_size, solrquery) do |lc, match, rc, start_word, end_word| -%>
   <tr>
 		<td>
       <% if sample_url -%>
