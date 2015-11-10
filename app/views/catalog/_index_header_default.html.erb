@@ -11,6 +11,10 @@
          <span class="document-counter">
          <%= t('blacklight.search.documents.counter', :counter => counter) if counter %>
          </span>
+         <% corpus_name = render_index_field_value document, :field => 'nomCorpus' %>
+         <% if corpus_name %>
+         <%= corpus_name %> &gt;
+         <% end %>
          <% sample_url = render_index_field_value document, :field => 'url' %>
          <% if sample_url %>
          <%= link_to render_index_field_value(document, :field => 'nomFichier'), sample_url, data: { no_turbolink: true } %>
