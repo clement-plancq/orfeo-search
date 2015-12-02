@@ -29,9 +29,13 @@ en:
       show: "Show as snippets"
     concordancer:
       show: "Show concordancer"
-      tree: "tree"
       match: "Result"
       no_term: "To use the concordance view, you must enter a search term."
+      links:
+        heading: "Links"
+        tree: "Tree"
+        copy: "Copy to clipboard"
+        copy_prompt: "Copy to clipboard: Ctrl-C, Enter."
       lc:
         heading: "Left context"
         button: "%{count} preceding words"

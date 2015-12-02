@@ -29,9 +29,15 @@ fr:
       show: "Voir extraits de texte"
     concordancer:
       show: "Voir concordancier"
-      tree: "arbre"
+      tree: "Arbre"
+      copy: "Copier dans le presse-papiers"
+      copy_prompt: "Copier dans le presse-papiers: Ctrl-C, Enter."
       match: "Résultat"
       no_term: "Pour utiliser la forme tabulaire, vous devez entrer un mot de recherche."
+      links:
+        heading: "Liens"
+        tree: "Arbre"
+        copy: "Copier dans le presse-papiers"
       lc:
         heading: "Contexte gauche"
         button: "%{count} mots précédents"

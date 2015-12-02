@@ -7,6 +7,16 @@
 
 <!-- Latest compiled and minified Locales -->
 
+<script type="text/javascript">
+  function copy_clip(clip) {
+    if (window.clipboardData && window.clipboardData.setData) {
+      window.clipboardData.setData('Text', clip);
+    } else {
+      window.prompt("<%= t('orfeo.concordancer.links.copy_prompt') %>", clip);
+    }
+  }
+</script>
+
 <div id="documents">
   <%- if params.fetch(:q, '').blank? %>
   <div>
@@ -48,6 +58,7 @@
         </th>
         <th data-field="match" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.match') %></th>
         <th data-field="rc" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.rc.heading') %></th>
+        <th data-switchable="true" data-sortable="false"><%= t('orfeo.concordancer.links.heading') %></th>
       </tr>
     </thead>
     <tbody>

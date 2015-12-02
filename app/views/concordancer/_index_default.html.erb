@@ -28,11 +28,15 @@
   <% par_tree = {tree: start_word} -%>
   <td>
     <%= link_to match, "#{sample_url}?#{par.to_query}", data: { no_turbolink: true } %>
-    <small>(<%= link_to t('orfeo.concordancer.tree'), "#{sample_url}?#{par_tree.to_query}", data: { no_turbolink: true } %>)</small>
   </td>
 	<% else -%>
 	<td><mark><%= match %></mark></td>
 	<% end -%>
 	<td><%= rc %></td>
+  <td>
+    <%= link_to image_tag("tree.svg", :alt => t('orfeo.concordancer.links.tree'), :height => 20), "#{sample_url}?#{par_tree.to_query}", data: { no_turbolink: true } %>
+    <% clipstring = "[#{render_index_field_value(document, :field => 'nomCorpus')} > #{render_index_field_value(document, :field => 'nomFichier')}] #{lc} _#{match}_ #{rc}" %>
+    <%= image_tag("copy.svg", :alt => t('orfeo.concordancer.links.copy'), :height => 20, :onclick => "copy_clip(\"#{clipstring}\")") %>
+  </td>
   </tr>
 	<% end -%>
