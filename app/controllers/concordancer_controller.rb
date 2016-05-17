@@ -12,14 +12,14 @@ class ConcordancerController < CatalogController
       ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
       config.default_solr_params = {
         qt: 'search',
-        rows: 50,
+        rows: 999999,
         fl: '*',
         # This syntax is OK in Ruby 2.2 but not in earlier versions:
         #'hl.fl': 'text',
         'hl.fl'.to_sym => 'text',
         'hl.simple.pre'.to_sym => '<mark>',
         'hl.simple.post'.to_sym => '</mark>',
-        'hl.snippets'.to_sym => 999,
+        'hl.snippets'.to_sym => 99999,
         'hl.fragsize'.to_sym => 0,
         hl: true
       }
@@ -28,7 +28,7 @@ class ConcordancerController < CatalogController
       #config.solr_path = 'select'
 
       # items to show per page, each number in the array represent another option to choose from.
-      #config.per_page = [10,20,50,100]
+      config.per_page = [999999]
 
       ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or
       ## parameters included in the Blacklight-jetty document requestHandler.
