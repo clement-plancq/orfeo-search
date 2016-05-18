@@ -12,4 +12,4 @@ Rails.application.config.assets.paths += %w( vendor/assets/javascripts vendor/as
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( bootstrap-table.js bootstrap-table.css )
+Rails.application.config.assets.precompile += %w( bootstrap-table.js bootstrap-table.css bootstrap-table-en-US.js bootstrap-table-fr-FR.js )
