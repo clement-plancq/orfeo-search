@@ -1,7 +1,15 @@
 <% # container for all documents in index view -%>
 
+<% # Bootstrap locales have different names from ours, here's the mapping.
+   # NOTE: you must edit this if you add new translations of the UI.
+ if I18n.locale == :fr
+   bt_locale = 'fr-FR'
+ else
+   bt_locale = 'en-US'
+ end %>
 <%= stylesheet_link_tag "bootstrap-table", media: "all" %>
 <%= javascript_include_tag "bootstrap-table" %>
+<%= javascript_include_tag "bootstrap-table-#{bt_locale}" %>
 
 <script type="text/javascript">
   function copy_clip(clip) {
@@ -42,7 +50,7 @@
 
   <table class="table-condensed" data-minimum-count-columns="0" id="hittable" data-show-columns="true"
    data-pagination="true" data-show-pagination-switch="true" data-page-list="[25, 50, 100, 500, ALL]"
-   data-toggle="table">
+   locale="<%= bt_locale %>" data-toggle="table">
     <thead>
       <tr>
         <th data-field="sample" data-sortable="true"><%= t('orfeo.concordancer.filename') %></th>
