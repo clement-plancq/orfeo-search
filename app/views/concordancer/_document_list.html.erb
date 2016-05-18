@@ -45,7 +45,7 @@
    data-toggle="table">
     <thead>
       <tr>
-        <th data-field="sample" data-sortable="true"><%= t('blacklight.search.fields.nomFichier') %></th>
+        <th data-field="sample" data-sortable="true"><%= t('orfeo.concordancer.filename') %></th>
         <% index_fields(documents[0]).each do |solr_fname, field| -%>
         <% if solr_fname != 'text' -%>
         <th data-sortable="true"><%= t("blacklight.search.fields.#{solr_fname}") %></th>

@@ -31,6 +31,7 @@ fr:
       show: "Voir concordancier"
       match: "Résultat"
       no_term: "Pour utiliser la forme tabulaire, vous devez entrer un mot de recherche."
+      filename: "Nom de fichier"
       links:
         heading: "Liens"
         tree: "Arbre"
