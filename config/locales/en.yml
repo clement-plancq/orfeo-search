@@ -31,6 +31,7 @@ en:
       show: "Show concordancer"
       match: "Result"
       no_term: "To use the concordance view, you must enter a search term."
+      number: "#"
       filename: "Filename"
       links:
         heading: "Links"

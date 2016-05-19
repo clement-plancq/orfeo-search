@@ -50,9 +50,10 @@
 
   <table class="table-condensed" data-minimum-count-columns="0" id="hittable" data-show-columns="true"
    data-pagination="true" data-show-pagination-switch="true" data-page-list="[25, 50, 100, 500, ALL]"
-   locale="<%= bt_locale %>" data-toggle="table">
+   data-locale="<%= bt_locale %>" data-toggle="table">
     <thead>
       <tr>
+        <th data-sortable="false" data-counter="true"><%= t('orfeo.concordancer.number') %></th>
         <th data-field="sample" data-sortable="true"><%= t('orfeo.concordancer.filename') %></th>
         <% index_fields(documents[0]).each do |solr_fname, field| -%>
         <% if solr_fname != 'text' -%>

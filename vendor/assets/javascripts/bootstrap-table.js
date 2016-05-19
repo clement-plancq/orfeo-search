@@ -463,6 +463,7 @@
         valign: undefined, // top, middle, bottom
         width: undefined,
         sortable: false,
+        counter: false,
         order: 'asc', // asc, desc
         visible: true,
         switchable: true,
@@ -1609,8 +1610,12 @@
 
                     item[that.header.stateField] = value === true || (value && value.checked);
                 } else {
+                  if (column.counter) {
+                    value = (i+1).toString();
+                  } else {
                     value = typeof value === 'undefined' || value === null ?
                         that.options.undefinedText : value;
+                  }
 
                     text = that.options.cardView ? ['<div class="card-view">',
                         that.options.showHeader ? sprintf('<span class="title" %s>%s</span>', style,

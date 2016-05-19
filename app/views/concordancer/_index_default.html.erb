@@ -5,7 +5,8 @@
   <% if solrquery =~ /^"(.*)"$/ then solrquery = $1 else solrquery = nil end %>
   <% split_context(txtz, lc_size, rc_size, solrquery) do |lc, match, rc, start_word, end_word| -%>
   <tr>
-		<td>
+    <td></td>
+    <td>
       <% if sample_url -%>
       <% name = render_index_field_value(document, :field => 'nomFichier') %>
       <% if name.length > 10 %>
