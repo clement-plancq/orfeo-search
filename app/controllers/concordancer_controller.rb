@@ -21,6 +21,7 @@ class ConcordancerController < CatalogController
         'hl.simple.post'.to_sym => '</mark>',
         'hl.snippets'.to_sym => 99999,
         'hl.fragsize'.to_sym => 0,
+        'hl.maxAnalyzedChars'.to_sym => 9999999,
         hl: true
       }
 
