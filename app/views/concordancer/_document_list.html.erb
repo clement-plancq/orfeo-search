@@ -44,7 +44,42 @@
   documents.each do |doc|
     split_to_json(json_data, doc, hist)
   end
+  total_hits = hist.delete(:total)
   %>
+
+  <%
+  # Now the total number of hits is in 'total_hits' and the histogram by
+  # corpus is in 'hist'. This part renders a donut chart, but you could
+  # also replace this with a plain HTML table or something else.
+  %>
+  <%= javascript_include_tag "jquery.canvasjs.min" %>
+  <%
+  dataPoints = []
+  hist.each do |corp, hits|
+    dataPoints << {y: hits, indexLabel: "#{corp}: #percent%", legendText: corp}
+  end
+  %>
+  <script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+        text: "<%= t(:'orfeo.concordancer.matches', :count => total_hits) %>"
+      },
+      animationEnabled: true,
+      data: [{
+        type: "doughnut",
+        startAngle: 60,
+        toolTipContent: "{legendText}: <strong>{y}</strong> (#percent%) ",
+        showInLegend: true,
+        dataPoints: <%= raw(JSON.fast_generate(dataPoints)) %>
+      }]
+    });
+    chart.render();
+  }
+  </script>
+  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
   <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <%= t(:'orfeo.concordancer.lc.button', :count => lc_size) %> <span class="caret"></span>

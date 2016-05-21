@@ -30,6 +30,7 @@ fr:
     concordancer:
       show: "Voir concordancier"
       match: "Résultat"
+      matches: "%{count} résultats"
       no_term: "Pour utiliser la forme tabulaire, vous devez entrer un mot de recherche."
       number: "№"
       filename: "Nom de fichier"
