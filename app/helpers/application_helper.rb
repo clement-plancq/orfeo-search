@@ -115,6 +115,62 @@ module ApplicationHelper
     end
   end
 
+  # Split string into fields and add them to the json array.
+  # The PARAMETER ARRAY 'list' IS MODIFIED by this function.
+  # If 'hist' is given, a histogram of matches by corpus is
+  # updated there (hist is also modified, obviously).
+  def split_to_json(list, document, hist = nil)
+    txtz = render_index_field_value document, :field => 'text'
+    sample_url = render_index_field_value document, :field => 'url'
+    solrquery = params.fetch(:q, '')
+    if solrquery =~ /^"(.*)"$/
+      solrquery = $1
+    else
+      solrquery = nil
+    end
+    count = 0
+    corpus = nil
+    split_context(txtz, lc_size, rc_size, solrquery) do |lc, match, rc, start_word, end_word|
+      if sample_url
+        name = render_index_field_value(document, :field => 'nomFichier')
+        if name.length > 10
+          doc = (link_to name[0..9], sample_url, data: { no_turbolink: true }, title: name) + '...'
+        else
+          doc = link_to name, sample_url, data: { no_turbolink: true }
+        end
+        par = {from: start_word, to: end_word}
+        par_tree = {tree: start_word}
+        matchv = link_to match, "#{sample_url}?#{par.to_query}", data: { no_turbolink: true }
+      else
+        doc = link_to_document document, document_show_link_field(document)
+        matchv = "<mark>#{match}</mark>"
+      end
+      curr = {n: '0', f: doc, lc: lc, m: matchv, rc: rc}
+      index_fields(document).each do |solr_fname, field|
+        if solr_fname != 'text'
+          curr[solr_fname] = render_index_field_value document, :field => solr_fname
+        end
+        if solr_fname == 'nomCorpus' && corpus.nil?
+          corpus = curr[solr_fname]
+        end
+      end
+
+      links = link_to image_tag("tree.svg", :alt => t('orfeo.concordancer.links.tree'), :height => 20), "#{sample_url}?#{par_tree.to_query}", data: { no_turbolink: true }
+      clipstring = "[#{render_index_field_value(document, :field => 'nomCorpus')} > #{render_index_field_value(document, :field => 'nomFichier')}] #{lc} _#{match}_ #{rc}"
+      links += image_tag("copy.svg", :alt => t('orfeo.concordancer.links.copy'), :height => 20, :onclick => "copy_clip(\"#{clipstring}\")")
+      curr[:links] = links
+      list << curr
+      count += 1
+    end
+    if hist
+      hist[:total] += count if hist.key? :total
+      if corpus
+        hist[corpus] = 0 unless hist.key? corpus
+        hist[corpus] += count
+      end
+    end
+  end
+
   def lc_size
     params.fetch(:lc, 5).to_i
   end

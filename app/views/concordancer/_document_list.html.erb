@@ -27,6 +27,24 @@
     <%= t('orfeo.concordancer.no_term') %>
   </div>
   <%- else %>
+  <%
+  columns = [{field: 'n', title: t('orfeo.concordancer.number'), counter: true}]
+  columns << {field: 'f', title: t('orfeo.concordancer.filename'), sortable: true}
+  index_fields(documents[0]).each do |solr_fname, field|
+    if solr_fname != 'text'
+      columns << {field: solr_fname, title: t("blacklight.search.fields.#{solr_fname}"), sortable: true}
+    end
+  end
+  columns << {field: 'lc', title: t('orfeo.concordancer.lc.heading'), align: 'right', sorter: 'lc_sorter', switchable: false, sortable: true}
+  columns << {field: 'm', title: t('orfeo.concordancer.match'), switchable: false, sortable: true}
+  columns << {field: 'rc', title: t('orfeo.concordancer.rc.heading'), switchable: false, sortable: true}
+  columns << {field: 'links', title: t('orfeo.concordancer.links.heading')}
+  json_data = []
+  hist = {total: 0}
+  documents.each do |doc|
+    split_to_json(json_data, doc, hist)
+  end
+  %>
   <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
       <%= t(:'orfeo.concordancer.lc.button', :count => lc_size) %> <span class="caret"></span>
@@ -48,31 +66,13 @@
     </ul>
   </div>
 
-  <table class="table-condensed" data-minimum-count-columns="0" id="hittable" data-show-columns="true"
-   data-pagination="true" data-show-pagination-switch="true" data-page-list="[25, 50, 100, 500, ALL]"
-   data-locale="<%= bt_locale %>" data-toggle="table">
-    <thead>
-      <tr>
-        <th data-sortable="false" data-counter="true"><%= t('orfeo.concordancer.number') %></th>
-        <th data-field="sample" data-sortable="true"><%= t('orfeo.concordancer.filename') %></th>
-        <% index_fields(documents[0]).each do |solr_fname, field| -%>
-        <% if solr_fname != 'text' -%>
-        <th data-sortable="true"><%= t("blacklight.search.fields.#{solr_fname}") %></th>
-        <% end -%>
-        <% end -%>
-        <th data-field="lc" data-switchable="false" data-sortable="true" data-sorter="lc_sorter" data-align="right">
-          <%= t('orfeo.concordancer.lc.heading') %>
-        </th>
-        <th data-field="match" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.match') %></th>
-        <th data-field="rc" data-switchable="false" data-sortable="true"><%= t('orfeo.concordancer.rc.heading') %></th>
-        <th data-switchable="true" data-sortable="false"><%= t('orfeo.concordancer.links.heading') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render collection: documents, partial: 'concordancer/document' %>
-    </tbody>
-  </table>
+  <table id="hittable" data-show-columns="true" data-pagination="true"
+   data-show-pagination-switch="true" data-page-list="[10, 25, 50, 100, ALL]"
+   data-locale="<%= bt_locale %>">
+ </table>
   <script type="text/javascript">
+  $('#hittable').bootstrapTable(<%= raw(JSON.fast_generate({'columns' => columns, 'data' => json_data})) %>);
+
   function lc_sorter(a, b) {
     a2 = a.slice(a.lastIndexOf(' ') + 1);
     b2 = b.slice(b.lastIndexOf(' ') + 1);
