@@ -9,6 +9,8 @@
  end %>
 <%= stylesheet_link_tag "bootstrap-table", media: "all" %>
 <%= javascript_include_tag "bootstrap-table" %>
+<%= javascript_include_tag "bootstrap-table-export" %>
+<%= javascript_include_tag "tableExport" %>
 <%= javascript_include_tag "bootstrap-table-#{bt_locale}" %>
 
 <script type="text/javascript">
@@ -101,7 +103,7 @@
     </ul>
   </div>
 
-  <table id="hittable" data-show-columns="true" data-pagination="true"
+  <table id="hittable" data-show-columns="true" data-pagination="false"
    data-show-pagination-switch="true" data-page-list="[10, 25, 50, 100, ALL]"
    data-locale="<%= bt_locale %>">
  </table>
