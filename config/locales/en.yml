@@ -86,3 +86,7 @@ en:
         annotator: "Annotator"
         quality: "Annotation quality"
         url: "Sample address"
+        statusAnnotation: "Annotation status"
+        modality: "Modality"
+        sousType: "Text type"
+        channel: "Channel"
