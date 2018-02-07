@@ -12,7 +12,7 @@ class CatalogController < ApplicationController
       ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
       config.default_solr_params = {
         qt: 'search',
-        rows: 10,
+        rows: 999999,
         fl: '*',
         # This syntax is OK in Ruby 2.2 but not in earlier versions:
         #'hl.fl': 'text',

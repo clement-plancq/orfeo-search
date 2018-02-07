@@ -24,7 +24,7 @@ class ConcordancerController < CatalogController
         'hl.maxAnalyzedChars'.to_sym => 9999999,
         hl: true
       }
-
+      config.max_per_page = 10000000
       # solr path which will be added to solr base url before the other solr params.
       #config.solr_path = 'select'
 
