@@ -2,6 +2,8 @@ en:
   blacklight:
     application_name: 'Orfeo'
     search:
+      facets:
+        title: 'Limit your search'
       pagination_info:
         pages:
           one: '<strong>%{start_num}</strong> - <strong>%{end_num}</strong> of <strong>%{total_num}</strong> samples'

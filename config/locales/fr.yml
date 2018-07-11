@@ -51,7 +51,7 @@ fr:
     search:
       fields:
         text: "Texte"
-        type: "Type de texte"
+        type: "Type"
         nomCorpus: "Corpus"
         langue: "Langage"
         nomFichier: "Nom de fichier"
@@ -86,7 +86,7 @@ fr:
         annotator: "Annotateur"
         quality: "Annotation quality"
         url: "Sample address"
-        statusAnnotation: "Status de l'annotation"
+        statutAnnotation: "Statut de l'annotation"
         modality: "Modalité"
         sousType: "Sous-type de texte"
         channel: "Situation de l'enregistrement"

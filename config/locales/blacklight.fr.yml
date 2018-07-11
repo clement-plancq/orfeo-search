@@ -2,6 +2,8 @@ fr:
   blacklight:
     application_name: 'Orféo'
     search:
+      facets:
+        title: 'Délimiter votre recherche'
       pagination_info:
         pages:
           one: '<strong>%{start_num}</strong> - <strong>%{end_num}</strong> sur <strong>%{total_num}</strong> échantillons'
